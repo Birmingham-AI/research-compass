@@ -1,0 +1,6 @@
+langserve
+fastapi
+langchain
+beautifulsoup4
+duckduckgo-search
+langchain-community
