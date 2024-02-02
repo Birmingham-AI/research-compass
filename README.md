@@ -32,6 +32,16 @@ source review/bin/activate
 pip install -r requirements.txt
 ```
 
+### Setup OpenAI API key
+
+If you have an OpenAI API key, you could set it as an environment variable in your terminal:
+
+```sh
+export OPENAI_API_KEY="your_openai_api_key"
+```
+
+> ***NOTE:*** If you don't have one, please signup and create new api key in [openAI platform](https://platform.openai.com/api-keys)
+
 ## Run the app
 
 Use this link in your browser -
