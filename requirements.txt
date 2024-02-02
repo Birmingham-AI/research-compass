@@ -3,4 +3,6 @@ fastapi
 langchain
 beautifulsoup4
 duckduckgo-search
-langchain-community
+pydantic==1.10.13
+sse_starlette
+langchain-openai

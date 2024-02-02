@@ -1,11 +1,16 @@
-from langchain.chat_models import ChatOpenAI
+#!/usr/bin/env python
+
+# Inspired from https://gist.github.com/hwchase17/69a8cdef9b01760c244324339ab64f0c
+
+from fastapi import FastAPI
+from langserve import add_routes
+from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.output_parser import StrOutputParser
-import requests
-from bs4 import BeautifulSoup
 from langchain.schema.runnable import RunnablePassthrough, RunnableLambda
-from langchain.utilities import DuckDuckGoSearchAPIWrapper
+from langchain_community.utilities import DuckDuckGoSearchAPIWrapper
 import json
+from utils.scrape import scrape_text
 
 RESULTS_PER_QUESTION = 3
 
@@ -26,30 +31,6 @@ if the question cannot be answered using the text, imply summarize the text. Inc
 SUMMARY_PROMPT = ChatPromptTemplate.from_template(SUMMARY_TEMPLATE)
 
 
-def scrape_text(url: str):
-    # Send a GET request to the webpage
-    try:
-        response = requests.get(url)
-
-        # Check if the request was successful
-        if response.status_code == 200:
-            # Parse the content of the request with BeautifulSoup
-            soup = BeautifulSoup(response.text, "html.parser")
-
-            # Extract all text from the webpage
-            page_text = soup.get_text(separator=" ", strip=True)
-
-            # Print the extracted text
-            return page_text
-        else:
-            return f"Failed to retrieve the webpage: Status code {response.status_code}"
-    except Exception as e:
-        print(e)
-        return f"Failed to retrieve the webpage: {e}"
-
-
-url = "https://blog.langchain.dev/announcing-langsmith/"
-
 scrape_and_summarize_chain = RunnablePassthrough.assign(
     summary = RunnablePassthrough.assign(
     text=lambda x: scrape_text(x["url"])[:10000]
@@ -59,34 +40,6 @@ scrape_and_summarize_chain = RunnablePassthrough.assign(
 web_search_chain = RunnablePassthrough.assign(
     urls = lambda x: web_search(x["question"])
 ) | (lambda x: [{"question": x["question"], "url": u} for u in x["urls"]]) | scrape_and_summarize_chain.map()
-
-## This is for Arxiv
-
-# from langchain.retrievers import ArxivRetriever
-#
-# retriever = ArxivRetriever()
-# SUMMARY_TEMPLATE = """{doc}
-#
-# -----------
-#
-# Using the above text, answer in short the following question:
-#
-# > {question}
-#
-# -----------
-# if the question cannot be answered using the text, imply summarize the text. Include all factual information, numbers, stats etc if available."""  # noqa: E501
-# SUMMARY_PROMPT = ChatPromptTemplate.from_template(SUMMARY_TEMPLATE)
-#
-#
-# scrape_and_summarize_chain = RunnablePassthrough.assign(
-#     summary =  SUMMARY_PROMPT | ChatOpenAI(model="gpt-3.5-turbo-1106") | StrOutputParser()
-# ) | (lambda x: f"Title: {x['doc'].metadata['Title']}\n\nSUMMARY: {x['summary']}")
-#
-# web_search_chain = RunnablePassthrough.assign(
-#     docs = lambda x: retriever.get_summaries_as_docs(x["question"])
-# )| (lambda x: [{"question": x["question"], "doc": u} for u in x["docs"]]) | scrape_and_summarize_chain.map()
-
-
 
 SEARCH_PROMPT = ChatPromptTemplate.from_messages(
     [
@@ -139,13 +92,9 @@ chain = RunnablePassthrough.assign(
     research_summary= full_research_chain | collapse_list_of_lists
 ) | prompt | ChatOpenAI(model="gpt-3.5-turbo-1106") | StrOutputParser()
 
-#!/usr/bin/env python
-from fastapi import FastAPI
-from langserve import add_routes
-
 
 app = FastAPI(
-  title="LangChain Server",
+  title="Research Compass",
   version="1.0",
   description="A simple api server using Langchain's Runnable interfaces",
 )
@@ -153,7 +102,7 @@ app = FastAPI(
 add_routes(
     app,
     chain,
-    path="/research-assistant",
+    path="/research-compass",
 )
 
 
