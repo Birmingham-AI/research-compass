@@ -14,7 +14,10 @@ perform review on the topic user requested.
 - langserve
 - fastapi
 
+## Create environment and install required packages
 
+```sh
 virtualenv review
 source review/bin/activate
 pip install -r requirements.txt
+```
