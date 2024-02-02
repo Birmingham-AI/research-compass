@@ -26,8 +26,10 @@ git clone https://github.com/tkmamidi/research-compass.git
 
 ### Create environment and install required packages
 
+Please change in to the root directory of the repo and execute the below commands.
+
 ```sh
-virtualenv review
+python -m venv review
 source review/bin/activate
 pip install -r requirements.txt
 ```
@@ -44,6 +46,10 @@ export OPENAI_API_KEY="your_openai_api_key"
 
 ## Run the app
 
-Use this link in your browser -
+```sh
+python src/app.py
+```
 
-[http://localhost:8000/research-assistant/playground/](http://localhost:8000/research-assistant/playground/)
+Use this link in your browser to chat -
+
+[http://localhost:8000/research-compass/playground/](http://localhost:8000/research-compass/playground/)
