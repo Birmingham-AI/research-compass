@@ -11,45 +11,55 @@ Below image is how we're designing the project.
 
 > ***NOTE:*** This is heavily adapted from this [GitHub Gist](https://gist.github.com/hwchase17/69a8cdef9b01760c244324339ab64f0c)
 
-## Installation
+## Getting Started
 
-*Tools:*
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-- Anaconda3 or pip3
-- Git
+### Prerequisites
 
-To fetch DITTO source code, change in to directory of your choice and run:
+You need to have Docker installed on your machine. You can download Docker [here](https://www.docker.com/products/docker-desktop).
+
+### Installing
+
+*1.* Clone the repository - To fetch DITTO source code, change in to directory of your choice and run:
 
 ```sh
 git clone https://github.com/tkmamidi/research-compass.git
 ```
 
-### Create environment and install required packages
-
-Please change in to the root directory of the repo and execute the below commands.
+*2.* Navigate to the project directory
 
 ```sh
-python -m venv review
-source review/bin/activate
-pip install -r requirements.txt
+cd RESEARCH-COMPASS
 ```
 
-### Setup OpenAI API key
+*3.* Setup OpenAI API key
 
-If you have an OpenAI API key, you could set it as an environment variable in your terminal:
+> ***NOTE:*** Please signup and create new api key in [openAI platform](https://platform.openai.com/api-keys).
+
+Update your OPENAI_API_KEY in the [Dockerfile](./Dockerfile).
+
+*4.* Build the Docker image
 
 ```sh
-export OPENAI_API_KEY="your_openai_api_key"
+docker build -t research-compass .
 ```
 
-> ***NOTE:*** If you don't have one, please signup and create new api key in [openAI platform](https://platform.openai.com/api-keys)
-
-## Run the app
+*5.* Run the Docker container
 
 ```sh
-python src/app.py
+docker run -p 8000:8000 --name research-compass research-compass
 ```
 
-Use this link in your browser to chat -
+*6.* Use this link in your browser to chat -
 
 [http://localhost:8000/research-compass/playground/](http://localhost:8000/research-compass/playground/)
+
+## Built With
+
+* [Python](https://www.python.org/) - The programming language used
+* [Docker](https://www.docker.com/) - Used for containerization
+
+## Authors
+
+* **Tarun Mamidi** - *Initial work* - [tkmamidi](https://github.com/tkmamidi)

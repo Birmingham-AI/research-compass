@@ -10,7 +10,7 @@ from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import RunnablePassthrough, RunnableLambda
 from langchain_community.utilities import DuckDuckGoSearchAPIWrapper
 import json
-from app_utils import scrape_text
+from .app_utils import scrape_text
 
 RESULTS_PER_QUESTION = 3
 
