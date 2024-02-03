@@ -21,7 +21,7 @@ You need to have Docker installed on your machine. You can download Docker [here
 
 ### Installing
 
-*1.* Clone the repository - To fetch DITTO source code, change in to directory of your choice and run:
+*1.* Clone the repository - change in to directory of your choice and run:
 
 ```sh
 git clone https://github.com/tkmamidi/research-compass.git
