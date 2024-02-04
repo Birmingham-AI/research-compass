@@ -11,6 +11,9 @@ from langchain.schema.runnable import RunnablePassthrough, RunnableLambda
 from langchain_community.utilities import DuckDuckGoSearchAPIWrapper
 import json
 from .app_utils import scrape_text
+# from llmlingua import PromptCompressor
+
+# llm_lingua = PromptCompressor()
 
 RESULTS_PER_QUESTION = 3
 
@@ -29,7 +32,7 @@ Using the above text, answer in short the following question:
 -----------
 if the question cannot be answered using the text, imply summarize the text. Include all factual information, numbers, stats etc if available."""  # noqa: E501
 SUMMARY_PROMPT = ChatPromptTemplate.from_template(SUMMARY_TEMPLATE)
-
+# SUMMARY_PROMPT = llm_lingua.compress_prompt(SUMMARY_TEMPLATE, instruction="", question="", target_token=400)
 
 scrape_and_summarize_chain = RunnablePassthrough.assign(
     summary = RunnablePassthrough.assign(
@@ -105,9 +108,7 @@ add_routes(
     path="/research-compass",
 )
 
-
 if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run(app, host="localhost", port=8000)
-

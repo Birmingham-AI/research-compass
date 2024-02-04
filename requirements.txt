@@ -6,3 +6,5 @@ duckduckgo-search==4.4
 pydantic==1.10.13
 sse_starlette==2.0.0
 langchain-openai==0.0.5
+#llmlingua
+#accelerate

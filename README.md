@@ -5,19 +5,36 @@
 Navigating the research landscape with AI-powered reviews. This project uses Langchain agents to
 perform review on the topic user requested.
 
-Below image is how we're designing the project.
+## What are AI Agents?
+
+Artificial Intelligence (AI) agents are software programs or systems that utilize AI to perform tasks or services for
+individuals or businesses. These agents are designed to interact with humans through natural language conversations
+using voice or text. AI agents work by understanding and interpreting human language, learning from interactions, and
+accessing information to respond to user queries or execute actions.
+
+## Using Langchain to Create AI Agents
+
+Langchain is a platform that allows for the quick prototyping of large language model applications and offers
+flexibility and simplicity in creating agents. Langchain empowers you to build dynamic AI agents that reason and act on
+their own.
+
+## Getting Started
+
+In this project, we're creating a set of agents tasked with searching the web given a question and summarizing the top 3
+results: it reads, analyzes, and synthesizes information, all guided by language models.
+
+Below image is how we're designing the project. This is heavily adapted from this [GitHub
+Gist](https://gist.github.com/hwchase17/69a8cdef9b01760c244324339ab64f0c) and [GitHub project](https://github.com/assafelovic/gpt-researcher).
 
 ![overview](overview.png)
 
-> ***NOTE:*** This is heavily adapted from this [GitHub Gist](https://gist.github.com/hwchase17/69a8cdef9b01760c244324339ab64f0c)
-
-## Getting Started
+## How to run?
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-You need to have Docker installed on your machine. You can download Docker [here](https://www.docker.com/products/docker-desktop).
+You need to have Docker installed on your machine. You can download [Docker here](https://www.docker.com/products/docker-desktop).
 
 ### Installing
 
@@ -62,4 +79,4 @@ docker run -p 8000:8000 --name research-compass research-compass
 
 ## Authors
 
-* **Tarun Mamidi** - *Initial work* - [tkmamidi](https://github.com/tkmamidi)
+* **Tarun Mamidi** - [tkmamidi](https://github.com/tkmamidi)
