@@ -77,6 +77,10 @@ docker run -p 8000:8000 --name research-compass research-compass
 * [Python](https://www.python.org/) - The programming language used
 * [Docker](https://www.docker.com/) - Used for containerization
 
+## Contributing
+
+We welcome contributions! [See the docs for guidelines](./CONTRIBUTING.md).
+
 ## Authors
 
 * **Tarun Mamidi** - [tkmamidi](https://github.com/tkmamidi)
