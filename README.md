@@ -52,23 +52,27 @@ cd RESEARCH-COMPASS
 
 *3.* Setup OpenAI API key
 
-> ***NOTE:*** Please signup and create new api key in [openAI platform](https://platform.openai.com/api-keys).
+Please signup and create new api key in [openAI platform](https://platform.openai.com/api-keys) and update your OPENAI_API_KEY in the [Dockerfile](./Dockerfile).
 
-Update your OPENAI_API_KEY in the [Dockerfile](./Dockerfile).
+*4.* Want to monitor the application and responses? (Optional)
 
-*4.* Build the Docker image
+See what’s happening with your application, so you can take action when needed and optimize.
+
+Please signup and create new api key in [Langsmith platform](https://www.langchain.com/langsmith) and update your LANGCHAIN_API_KEY in the [Dockerfile](./Dockerfile).
+
+*5.* Build the Docker image
 
 ```sh
 docker build -t research-compass .
 ```
 
-*5.* Run the Docker container
+*6.* Run the Docker container
 
 ```sh
 docker run -p 8000:8000 --name research-compass research-compass
 ```
 
-*6.* Use this link in your browser to chat -
+*7.* Use this link in your browser to chat -
 
 [http://localhost:8000/research-compass/playground/](http://localhost:8000/research-compass/playground/)
 
