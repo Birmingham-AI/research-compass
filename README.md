@@ -5,7 +5,7 @@
 Navigating the research landscape with AI-powered reviews. This project uses Langchain agents to
 perform review on the topic user requested.
 
-Presentation slides for the workshop - https://docs.google.com/presentation/d/1tS7RyNbBcT0EgIXg-gImkoODTbiz43-EJrm53QG8hS4/edit?usp=sharing
+[Presentation slides from the workshop](https://docs.google.com/presentation/d/1tS7RyNbBcT0EgIXg-gImkoODTbiz43-EJrm53QG8hS4/edit?usp=sharing)
 
 ## What are AI Agents?
 
